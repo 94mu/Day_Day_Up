@@ -38,7 +38,7 @@ plt.ylabel('price')
 plt.legend(loc='upper left')
 plt.show()
 '''
-
+'''Polynomial Regression
 # Generative polynomial features
 def polynomial_features( data, deg=2 ):
     data1 = data.copy()
@@ -123,3 +123,4 @@ sales = sales.sort_values( ['sqft_living','price'] )
 # polynomial_output(sales, deg=2)
 # polynomial_output(sales, deg=3)
 polynomial_output(sales, deg=15)
+'''
