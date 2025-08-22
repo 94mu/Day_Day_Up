@@ -24,6 +24,7 @@ from sklearn.model_selection import train_test_split
 X, y = df.drop(columns='mpg').values, df['mpg'].values
 X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8, random_state=3)
 
+'''
 # 模型训练
 from sklearn.linear_model import LinearRegression
 
@@ -43,4 +44,35 @@ r2 = r2_score(y_test, y_pred)
 
 print(f'均方误差: {mse:.4f}')
 print(f'平均绝对误差: {mae:.4f}')
+print(f'决定系数: {r2:.4f}')
+'''
+
+'''
+# 正则化
+## 岭回归
+from sklearn.linear_model import Ridge
+from sklearn.metrics import mean_squared_error, r2_score
+model = Ridge()
+model.fit(X_train,y_train)
+y_pred = model.predict(X_test)
+print("回归系数：", model.coef_)
+print("截距：", model.intercept_)
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+print(f'均方误差：{mse:.4f}')
+print(f'决定系数：{r2:.4f}')
+'''
+
+## 套索回归
+from sklearn.linear_model import Lasso
+from sklearn.metrics import mean_squared_error, r2_score
+
+model = Lasso()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+print('回归系数:', model.coef_)
+print('截距:', model.intercept_)
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+print(f'均方误差: {mse:.4f}')
 print(f'决定系数: {r2:.4f}')
